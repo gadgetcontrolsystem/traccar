@@ -99,6 +99,7 @@ public abstract class BasePipelineFactory implements ChannelPipelineFactory {
                 msg.append("]");
 
                 if (event.getMessage() instanceof ChannelBuffer) {
+                    Log.info(msg.toString() + " " + event.getMessage().toString());
                     msg.append(" HEX: ");
                     msg.append(ChannelBuffers.hexDump((ChannelBuffer) event.getMessage()));
                 }
