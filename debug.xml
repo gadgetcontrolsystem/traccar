@@ -14,10 +14,10 @@
 
     <entry key='logger.file'>target/tracker-server.log</entry>
 
-    <entry key='database.driver'>org.h2.Driver</entry>
-    <entry key='database.url'>jdbc:h2:./target/database</entry>
-    <entry key='database.user'>sa</entry>
-    <entry key='database.password'></entry>
+    <entry key='database.driver'>org.postgresql.Driver</entry>
+    <entry key='database.url'>jdbc:postgresql://localhost:5432/postgres</entry>
+    <entry key='database.user'>postgres</entry>
+    <entry key='database.password'>postgres</entry>
 
     <entry key='intellitrac.port'>6037</entry>
 

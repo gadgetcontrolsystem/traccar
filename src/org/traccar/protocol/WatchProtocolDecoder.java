@@ -18,11 +18,7 @@ package org.traccar.protocol;
 import org.jboss.netty.channel.Channel;
 import org.traccar.BaseProtocolDecoder;
 import org.traccar.DeviceSession;
-import org.traccar.helper.BitUtil;
-import org.traccar.helper.DateBuilder;
-import org.traccar.helper.Parser;
-import org.traccar.helper.PatternBuilder;
-import org.traccar.helper.UnitsConverter;
+import org.traccar.helper.*;
 import org.traccar.model.CellTower;
 import org.traccar.model.Network;
 import org.traccar.model.Position;
@@ -132,6 +128,8 @@ public class WatchProtocolDecoder extends BaseProtocolDecoder {
     @Override
     protected Object decode(
             Channel channel, SocketAddress remoteAddress, Object msg) throws Exception {
+
+        Log.info((String) msg);
 
         Parser parser = new Parser(PATTERN, (String) msg);
         if (!parser.matches()) {
