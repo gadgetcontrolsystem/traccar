@@ -123,6 +123,8 @@ public class WatchProtocolEncoder extends StringProtocolEncoder implements Strin
                 return formatCommand(command, "LZ,,{%s}", Command.KEY_TIMEZONE);
             case Command.TYPE_SET_INDICATOR:
                 return formatCommand(command, "FLOWER,{%s}", Command.KEY_DATA);
+            case Command.TYPE_CALL_PHONE:
+                return formatCommand(command, "CALL", Command.KEY_PHONE);
             default:
                 Log.warning(new UnsupportedOperationException(command.getType()));
                 break;

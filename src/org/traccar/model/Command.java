@@ -66,6 +66,8 @@ public class Command extends Message {
     public static final String KEY_INDEX = "index";
     public static final String KEY_PHONE = "phone";
 
+    public static final String TYPE_CALL_PHONE = "phoneCall";
+
     private boolean textChannel;
 
     public boolean getTextChannel() {
