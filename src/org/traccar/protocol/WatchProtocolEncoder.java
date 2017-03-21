@@ -119,12 +119,73 @@ public class WatchProtocolEncoder extends StringProtocolEncoder implements Strin
                 return formatCommand(command, "TK," + getBinaryData(command));
             case Command.TYPE_POSITION_PERIODIC:
                 return formatCommand(command, "UPLOAD,{%s}", Command.KEY_FREQUENCY);
-            case Command.TYPE_SET_TIMEZONE:
-                return formatCommand(command, "LZ,,{%s}", Command.KEY_TIMEZONE);
+            /*case Command.TYPE_SET_TIMEZONE:
+                return formatCommand(command, "LZ,,{%s}", Command.KEY_TIMEZONE);*/
             case Command.TYPE_SET_INDICATOR:
                 return formatCommand(command, "FLOWER,{%s}", Command.KEY_DATA);
+            /***NEW COMMANDS***/
+            case Command.TYPE_CENTER_NUMBER:
+                return formatCommand(command, "CENTER,{%s}", Command.KEY_PHONE);
+            case Command.TYPE_ASSIST_NUMBER:
+                return formatCommand(command, "SLAVE,{%s}", Command.KEY_PHONE);
+            case Command.TYPE_CONTROL_PASSWORD:
+                return formatCommand(command, "PW,{%s}", Command.KEY_PASSWORD);
             case Command.TYPE_CALL_PHONE:
-                return formatCommand(command, "CALL", Command.KEY_PHONE);
+                return formatCommand(command, "CALL,{%s}", Command.KEY_PHONE);
+            case Command.TYPE_SEND_SMS:
+                return formatCommand(command, "SMS,{%s},{%s}", Command.KEY_PHONE, Command.KEY_MESSAGE);
+            case Command.TYPE_MONITOR:
+                return formatCommand(command, "MONITOR");
+            case Command.TYPE_REMOTE_UPGRADE:
+                return formatCommand(command, "UPGRADE,{%s}", Command.KEY_URL);
+            case Command.TYPE_IP_PORT:
+                return formatCommand(command, "IP,{%s},{%s}", Command.KEY_URL, Command.KEY_PORT);
+            case Command.TYPE_FACTORY_RESET:
+                return formatCommand(command, "FACTORY");
+            case Command.TYPE_LANG_TIME_AREA:
+                return formatCommand(command, "LZ,{%s},{%s}", Command.KEY_LANGUAGE, Command.KEY_TIMEZONE);
+            case Command.TYPE_QUERY_GOOGLE_LINK:
+                return formatCommand(command, "URL,{%s}", Command.KEY_URL);
+            case Command.TYPE_APN_SETTINGS:
+                return formatCommand(command, "APN,{%s},{%s},{%s},{%s}", Command.KEY_APN_NAME, Command.KEY_APN_USER_NAME, Command.KEY_APN_CODE, Command.KEY_APN_USER_DATA);
+            case Command.TYPE_SMS_ACCESS_SETTINGS:
+                return formatCommand(command, "ANY," + getEnableFlag(command));
+            case Command.TYPE_PARAMETER_QUERY:
+                return formatCommand(command, "TS");
+            case Command.TYPE_VERSION_QUERY:
+                return formatCommand(command, "VERNO");
+            case Command.TYPE_LOCATION_ORDER:
+                return formatCommand(command, "CR");
+            case Command.TYPE_BLUETOOTH_CONTROL_ORDER:
+                return formatCommand(command, "BT," + getEnableFlag(command));
+            case Command.TYPE_WORKING_TIME_AREA_DIRECTIVE:
+                return formatCommand(command, "WORK,{%s}", Command.KEY_DATA);
+            case Command.TYPE_WORKTIME:
+                return formatCommand(command, "WORKTIME,{%s}", Command.KEY_WORKTIME);
+            case Command.TYPE_SHUTDOWN:
+                return formatCommand(command, "POWEROFF");
+            case Command.TYPE_PULSE_QUERY:
+                return formatCommand(command, "PULSE");
+            case Command.TYPE_PEDOMETER:
+                return formatCommand(command, "PEDO," + getEnableFlag(command));
+            case Command.TYPE_PEDOMETER_WALKTIME:
+                return formatCommand(command, "WALKTIME,{%s}", Command.KEY_DATA);
+            case Command.TYPE_SLEEPTIME:
+                return formatCommand(command, "SLEEPTIME,{%s}", Command.KEY_DATA);
+            case Command.TYPE_LOCATE:
+                return formatCommand(command, "FIND");
+            case Command.TYPE_SHOW_MESSAGE:
+                return formatCommand(command, "MESSAGE,{%s}", Command.KEY_MESSAGE);
+            case Command.TYPE_SMS_ON_OFF:
+                return formatCommand(command, "SMSONOFF," + getEnableFlag(command));
+            case Command.TYPE_AUTOMATIC_PICKUP:
+                return formatCommand(command, "GSMANT," + getEnableFlag(command));
+            case Command.TYPE_WHITELIST1:
+                return formatCommand(command, "WHITELIST1,{%s}", Command.KEY_DATA);
+            case Command.TYPE_WHITELIST2:
+                return formatCommand(command, "WHITELIST2,{%s}", Command.KEY_DATA);
+            case Command.TYPE_SET_PHONEBOOK2:
+                return formatCommand(command, "PHB2,{%s}", Command.KEY_DATA);
             default:
                 Log.warning(new UnsupportedOperationException(command.getType()));
                 break;
